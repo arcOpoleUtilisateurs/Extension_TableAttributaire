@@ -405,14 +405,52 @@ package com.esrifrance.arcopole.attributetable.client.attributetable
 			
 			_log.debug("Exporting to Excel");
 			//Prepare request
-			var url:String = configMgr.applicationURL + "/exportexcel";
+			/*var url:String = configMgr.applicationURL + "/exportexcel";
 			
 			var request:URLRequest = new URLRequest(url);
 			request.method = URLRequestMethod.POST;
 			request.data = new URLVariables();				
 			request.data.html = getHTMLTable(this.attributeTable.attributeTableDataGrid);
 			//Open window
-			navigateToURL(request);				
+			navigateToURL(request);	*/
+			
+			exportAs3Excel(this.attributeTable.attributeTableDataGrid);
+		}
+		
+		//Export Excel en utilisant AS3Excel
+		private function exportAs3Excel(dg:DataGrid) : void {
+			var sheet:Sheet = new Sheet();
+			sheet.resize(dg.dataProvider.length+1, dg.columns.length+1);
+			
+			// Field names
+			var indexligne:int=0;
+			var indexColumn:int=0;
+			for each (var header:GridColumn in dg.columns) {
+				if(header.visible) {
+					sheet.setCell(indexligne, indexColumn, header.headerText);
+					indexColumn++;
+				}
+			}
+			indexligne++;
+			//sheet.resize(indexligne+1, dg.columns.length);
+			// Field values
+			for each (var item:Object in dg.dataProvider) {
+				indexColumn=0;
+				for each (var column:GridColumn in this.attributeTable.attributeTableDataGrid.columns) {				
+					if(column.visible){
+						sheet.setCell(indexligne,indexColumn,column.itemToLabel(item));
+						indexColumn++;
+					}
+				}
+				indexligne++;
+			}
+			
+			var xls:ExcelFile = new ExcelFile();
+			xls.sheets.addItem(sheet);
+			var bytes:ByteArray = xls.saveToByteArray();
+			var sFilePath:String = "export.xls";
+			var fr:FileReference = new FileReference();
+			fr.save(bytes, sFilePath); 
 		}
 		
 		private function getHTMLTable(dg:DataGrid) : String
