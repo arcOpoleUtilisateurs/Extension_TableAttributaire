@@ -6,9 +6,11 @@ Cette extension a été développée par des collectivités utilisatrices d'arcO
 
 Pour ceux qui souhaitent participer au développement ou installer l'extension, voici la procédure d'installation :
 
-1) Téléchargez le projet en cliquand sur le bouton "Download ZIP" situé dans la colonne de droite,
+1) Téléchargez le projet en cliquant sur le bouton "Download ZIP" situé dans la colonne de droite,
 
-2) Récupérez et déposez le fichier .SWF (qui se trouve à la racine) sur votre serveur dans les répertoires suivants :
+2) Si vous utilisez arcOpole Studio 3.2, copiez le fichier ExtensionTableAttributaie.swf ( 
+si vous utilisez arcOpole Studio 3.3, copiez le fichier ModuleTableAttributaire.swf) et
+déposez-le sur votre serveur dans les répertoires suivants :
   - ...\clients\arcopole_studio\extensions
   - ...\clients\clientFlashArcopole\extensions
 
