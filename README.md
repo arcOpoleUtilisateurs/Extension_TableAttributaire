@@ -17,12 +17,12 @@ déposez-le sur votre serveur dans les répertoires suivants :
 3) Référencez ce nouvel SWF dans le fichier ...\WEB-INF\applications\TFA\client.xml
 
 4) Vérifiez que la configuration du serveur arcOpole référence le filtre d'url "/exportexcel".
-Pour cela, ouvrez le fichier ...\WEB-INF\configuration.xml et ajoutez si nécessaire les lignes ci-dessous juste avant la balise </dispatcher>.
-	<!-- Export Excel -->
-	<urlfilter startwith="/exportexcel" handler-class="com.esrifrance.restfmksrv.handlers.exportexcel.ExportExcelHandler">
-		<handler-configuration>
-		</handler-configuration>
-	</urlfilter>
+Pour cela, ouvrez le fichier ...\WEB-INF\configuration.xml et ajoutez si nécessaire les lignes ci-dessous juste avant la balise "</dispatcher>".
+<!-- Export Excel -->
+<urlfilter startwith="/exportexcel" handler-class="com.esrifrance.restfmksrv.handlers.exportexcel.ExportExcelHandler">
+	<handler-configuration>
+	</handler-configuration>
+</urlfilter>
 Après avoir modifié ce fichier, redémarrez le serveur Tomcat.
 	
 5) Relancez arcOpole Studio.
